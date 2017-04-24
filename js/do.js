@@ -349,7 +349,7 @@ var Game = {
 	bindEvents : function(){	//事件操作的集合
 		var This = this;
 		$(document).on('keydown',function(ev){
-			if(ev.keyCode==38 && keyCode==39){
+			if(ev.which==38 && ev.keyCode==39){
 				This.parabola();
 			}else{
 				var key = This.getKey(ev);
@@ -491,7 +491,7 @@ var Game = {
 		This.draw( This.$drawImg, This.imageX, This.imageY, 16, 16, This.mario.mariox, This.mario.marioy, 16, 16);
 	},
 	parabola : function(){		//抛物线运动
-
+		console.log(111);
 	},
 	draw : function( img, sx, sy, swidth, sheight, x, y, width, height){
 		this.ctx.drawImage(img, sx, sy, swidth, sheight, x, y, width, height);
@@ -546,9 +546,15 @@ var Game = {
 	],
 	pipeCollide : function(){	//pipe管道碰撞检测
 		for(var i=0;i<this.enemyPosition.length;i++){
-			if( (this.mario.mariox+this.gridWidth) >= this.enemyPosition[i].x ){
-				this.mario.mariox = this.enemyPosition[i].x - 16;
-				console.log(111);
+			if( ((this.mario.mariox+this.gridWidth) >= this.enemyPosition[i].x) && this.mario.mariox <= (this.enemyPosition[i].x + 2*this.gridWidth ) ){
+				if( (this.mario.marioy+this.gridHeight) > this.enemyPosition[i].y ){
+					this.mario.mariox = this.enemyPosition[i].x - 20;
+					this.$map.css('left', 96-this.enemyPosition[i].x );
+					return false;
+				}else if( (this.mario.marioy+this.gridHeight) <= this.enemyPosition[i].y ){
+					this.mario.marioy = this.enemyPosition[i].y - 16;
+					return false;
+				}
 			}
 		}
 	},
