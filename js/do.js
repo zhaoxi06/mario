@@ -400,7 +400,7 @@ var Game = {
 		marioy : 320,	//马里奥起始位置的top值
 		fly : false,	//是否在飞
 		stop : true,			//是否静止
-		tmer : null,
+		timer : null,
 		posY : 0 		//定位
 	},
 	createMario : function(){	//创建mario
@@ -545,18 +545,45 @@ var Game = {
 		}
 	],
 	pipeCollide : function(){	//pipe管道碰撞检测
-		for(var i=0;i<this.enemyPosition.length;i++){
-			if( ((this.mario.mariox+this.gridWidth) >= this.enemyPosition[i].x) && this.mario.mariox <= (this.enemyPosition[i].x + 2*this.gridWidth ) ){
-				if( (this.mario.marioy+this.gridHeight) > this.enemyPosition[i].y ){
-					this.mario.mariox = this.enemyPosition[i].x - 20;
-					this.$map.css('left', 96-this.enemyPosition[i].x );
-					return false;
-				}else if( (this.mario.marioy+this.gridHeight) <= this.enemyPosition[i].y ){
-					this.mario.marioy = this.enemyPosition[i].y - 16;
-					return false;
-				}
-			}
+		// for(var i=0;i<this.enemyPosition.length;i++){
+		// 	if( ((this.mario.mariox+this.gridWidth) >= this.enemyPosition[i].x) && this.mario.mariox <= (this.enemyPosition[i].x + 2*this.gridWidth ) ){
+		// 		if( (this.mario.marioy+this.gridHeight) > this.enemyPosition[i].y ){
+		// 			this.mario.mariox = this.enemyPosition[i].x - 20;
+		// 			this.$map.css('left', 96-this.enemyPosition[i].x );
+		// 			return false;
+		// 		}else if( (this.mario.marioy+this.gridHeight) <= this.enemyPosition[i].y ){
+		// 			this.mario.marioy = this.enemyPosition[i].y - 16;
+		// 			return false;
+		// 		}
+		// 	}
+		// }
+	},
+	collide : function( obj1, obj2){
+		var pos1 = this.getObjPosition(obj1);
+		var L1 = pos1.L;
+		var R1 = pos1.R;
+		var T1 = pos1.T;
+		var B1 = pos1.B;
+
+		var pos2 = this.getObjPosition(obj2);
+		var L2 = pos2.L;
+		var R2 = pos2.R;
+		var T2 = pos2.T;
+		var B2 = pos2.B;
+
+		if ( R1 < L2 || L1 > R2 || B1 < T2 || T1 > B2 ) {	//没有发生碰撞
+			return false;
+		}else{	//发生碰撞
+			return true;
 		}
+	},
+	getObjPosition : function(obj){
+		var pos = {L: 0,R: 0,T:0, B:0};
+		pos.L = obj.position().left;
+		pos.R = obj.position().left + obj.width();
+		pos.T = obj.position().top;
+		pos.B = obj.position().top + obj.height();
+		return pos;
 	},
 	askData : [
 		{
