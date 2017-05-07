@@ -305,9 +305,10 @@ var Game = {
 	gridWidth : 16,		//网格的宽度大小
 	gridHeight : 16,		//网格的高度大小
 	iNow : 1,		//当前关卡
-	bgSpeed : 5,	//背景移动的速度
+	bgSpeed : 4,	//背景移动的速度
 	imageX : 0,		//图像的x坐标
 	imageY : 0,
+	drawHeight : 16,	//要绘制的图像的高度
 	init : function(){	//初始化
 		this.elements();
 		this.createMap();
@@ -349,159 +350,199 @@ var Game = {
 	bindEvents : function(){	//事件操作的集合
 		var This = this;
 		$(document).on('keydown',function(ev){
-			if(ev.which==38 && ev.keyCode==39){
-				This.parabola();
-			}else{
-				var key = This.getKey(ev);
-				This.mario.stop = true;
-				This.marioWalk(key);
-			}
+			This.keyDown(ev);
+			This.change();
 		});
 		$(document).on('keyup',function(ev){
-			var key = This.getKey(ev);
-			This.mario.stop = false;
-			This.marioWalk(key);
+			This.keyUp(ev);
+			This.backStart();
 		});
 	},
-	getKey : function(ev){	//获取键盘按键
+	keyDown : function(ev){	//键盘按下时
 		var This = this;
 		switch(ev.keyCode) {
 			case 37 :    //向左
-				return 'left';
-				//This.mario.bind.left = true;
+			case 65 :    //A
+				This.mario.left = true;
+				This.mario.status = 'left';
 				break;
 			case 38 :    //向上
-				return 'up';
-				//This.mario.bind.up = true;
+			case 74 :    //J
+				This.mario.up = true;
 				break;
 			case 39 :    //向右
-				return 'right';
-				//This.mario.bind.right = true;
-				//This.mario.mariox += 16;
+			case 70 :    //F
+				This.mario.right = true;
+				This.mario.status = 'right';
+				break;
+		}
+	},
+	keyUp : function(ev){	//键盘抬起时
+		var This = this;
+		switch(ev.keyCode) {
+			case 37 :    //向左
+			case 65 :    //A
+				This.mario.left = false;
+				break;
+			case 38 :    //向上
+			case 74 :    //J
+				This.mario.up = false;
+				break;
+			case 39 :    //向右
+			case 70 :    //F
+				This.mario.right = false;
 				break;
 		}
 	},
 	mario : {	//马里奥数据
 		id : 'mario',
 		style : 'normal',
-		bigStyle : 'big',
-		radiateStyle : 'radiate',
-		aleftStyle : 'aleft',
-		rightwardStyle : 'rightward',
-		leftWalkStyle : 'leftWalk',
-		rightWalkStyle : 'rightWalk',
-		leftJumpStyle : 'leftJump',
-		rightJumpStyle : 'rightJump',
-		dieStyle : 'dieMario',
-		speedX : 6,
-		speedY : 8,
-		jumpHeight : 128,
+		speedX : 6,		//x方向的速度
+		speedY : 8,		//y方向的速度
+		jumpHeight : 128,	//跳跃的最大高度
 		mariox : 80,		//马里奥起始位置的left值
 		marioy : 320,	//马里奥起始位置的top值
 		fly : false,	//是否在飞
-		stop : true,			//是否静止
+		big : false,	//是否变大
+		//stop : true,			//是否静止
+		status : 'right',		//记录当前方向是向左还是向右
 		timer : null,
-		posY : 0 		//定位
+		num : 0,	//马里奥升高的高度
+		maxHigh : false,	//是否到达最高点
+		left : false,	//是否向左
+		right : false,	//是否向右
+		up : false,		//是否向上
 	},
 	createMario : function(){	//创建mario
 		var ctx = this.$myCanvas.getContext('2d');
-		ctx.drawImage(this.$drawImg,0,0,16,16,80,320,16,16);
+		ctx.drawImage(this.$drawImg,0,8*this.gridHeight,16,32,80,320,16,32);
 	},
-	marioWalk : function(value){		//mario走路
+	backStart : function(){
 		var This = this;
-		//var posX = 0;
-		//var posY = 0;
-		switch(value){
-			case 'up' :
-				// This.mario.fly = true;
-				// posY =  This.mario.marioy;
-				This.upFly();
-				break;
-			case 'left' : 
-				This.marioMove(value);
-				This.bgMove(1);
-				break;
-			case 'right' : 
-				//posX = This.mario.mariox + 16;
-				This.marioMove(value);
-				This.bgMove(-1);
-				This.pipeCollide();
-				break;
-		}
+		clearInterval(This.mario.timer);
+		This.mario.timer = setInterval(function(){
+			if(This.mario.num > 0 && This.mario.num != 0){
+				This.mario.num -= 4;
+				This.mario.marioy += 4;
+			}
+			if(This.mario.num == 0){
+				This.mario.maxHigh = false;
+				This.imageX = 0;
+				clearInterval(This.mario.timer);
+			}
+			//这一步至关重要，如果不清除之前画布上的痕迹，马里奥在画面上显示一直没动，但是实际位置已经发生了变化
+			This.draw( This.$drawImg, This.imageX, This.imageY, 16, This.drawHeight, This.mario.mariox, This.mario.marioy, 16, This.drawHeight);
+		},30);
 	},
-	marioMove : function(value){
+	change : function(){	//mario的改变 左右移动和跳跃
 		var This = this;
-		if( This.mario.stop ){
-			This.imageX += 16;
+		var player = this.mario;
+		if(!player.up){
+			//imageY的选择
+			if(player.left){
+				if(player.big){
+					This.imageY = 4*This.gridHeight;
+					This.drawHeight = 32;	//马里奥变大，高度上需要占用两个方块
+				}else{
+					This.imageY = 0;
+					This.drawHeight = 16;
+				}
+				This.bgMove(0);				//马里奥向左走，背景向右移动
+				player.mariox -= This.bgSpeed;		//马里奥也向左移动
+			}
+			if(player.right){
+				if(player.big){
+					This.imageY = 12*This.gridHeight;
+					This.drawHeight = 32;
+				}else{
+					This.imageY = 8*This.gridHeight;
+					This.drawHeight = 16;
+				}
+				This.bgMove(-1);			//马里奥向右走，背景向左移动
+				player.mariox += This.bgSpeed;		//马里奥也向右移动
+			}
+			//imageX的变化
+			This.imageX += This.gridWidth;
+			if(This.imageX >= 48){
+				This.imageX = 0;
+			}
+			//马里奥还没回到地面
+			if(player.num != 0){
+				player.num -= 4;
+				player.marioy += 4;
+			}
 		}else{
-			This.imageX = 0;
-		}
-		if( This.imageX >= 48 ){
-			This.imageX = 0;
-		}
-		if(value == "right"){
-			This.mario.mariox += 5;
+			//没有同时按下左右移动键盘时
+			if(player.big){
+				if(player.status == 'left'){
+					This.imageY = 6*This.gridHeight;
+				}
+				if(player.status == 'right'){
+					This.imageY = 14*This.gridHeight;
+				}
+			}else{
+				if(player.status == 'left'){
+					This.imageY = 1*This.gridHeight;
+				}
+				if(player.status == 'right'){
+					This.imageY = 9*This.gridHeight;
+				}
+			}
+			if(player.left){
+				This.bgMove(0);				//马里奥向左走，背景向右移动
+				player.mariox -= This.bgSpeed;		//马里奥也向左移动
+			}
+			if(player.right){
+				This.bgMove(-1);				//马里奥向左走，背景向右移动
+				player.mariox += This.bgSpeed;		//马里奥也向左移动
+			}
+			This.imageX = 16;
 
-		}else if(value == "left"){
-			This.mario.mariox -= 5;
-		}
-		This.ctx.clearRect(0,0,This.$myCanvas.width,This.$myCanvas.height);
-		This.draw( This.$drawImg, This.imageX, This.imageY, 16, 16, This.mario.mariox, This.mario.marioy, 16, 16);
-	},
-	upFly : function(){		//向上
-		var This = this;
-		if( This.mario.stop ){
-			if(This.mario.fly){
-				if(This.mario.marioy>(This.mario.posY-128) || This.mario.marioy<=This.mario.posY ){
-					This.mario.marioy -= 5;
+			if(player.maxHigh){
+				player.num -= 4;
+				if(player.num == 0){
+					player.maxHigh = false;
+					This.imageX = 0;
 				}
-				if(This.mario.marioy<=(This.mario.posY-128)){
-					while(!(This.mario.marioy == This.mario.posY)){
-						This.mario.marioy += 5;
-					}
-					This.mario.fly = false;
-				}
-			}else{
-				This.mario.posY = This.mario.marioy;
-				This.mario.fly = true;
+				player.marioy += 4;
 			}
-		}else{
-			if( This.mario.marioy == This.mario.posY ){
-				This.mario.fly = false;
-			}else{
-				while(!(This.mario.marioy == This.mario.posY)){
-					This.mario.marioy += 5;
+			if(!player.maxHigh && player.num < 128){
+				player.num += 4;
+				if(player.num >= 128){
+					player.maxHigh = true;
 				}
-				This.mario.fly = false;
-				// This.mario.timer = setInterval(function(){
-				// 	This.mario.marioy += 5;
-				// 	console.log(111);
-				// 	if(This.mario.marioy == This.mario.posY){
-				// 		clearInterval(This.mario.timer);
-				// 	}
-				// },150);
+				player.marioy -= 4;
 			}
 		}
-		if(This.mario.marioy == This.mario.posY){
-			This.imageX = 0;
-		}else{
-			This.imageX = 32;
+		if(player.mariox < 0){	//保证马里奥不走出地图的最左边
+			player.mariox = 0;
 		}
-		This.ctx.clearRect(0,0,This.$myCanvas.width,This.$myCanvas.height);
-		This.draw( This.$drawImg, This.imageX, This.imageY, 16, 16, This.mario.mariox, This.mario.marioy, 16, 16);
+		if( -(parseInt(This.$map.css('left'))) >= player.mariox){
+			player.mariox = -parseInt(This.$map.css('left'));
+		}
+		This.draw( This.$drawImg, This.imageX, This.imageY, 16, This.drawHeight, This.mario.mariox, This.mario.marioy, 16, This.drawHeight);
 	},
-	parabola : function(){		//抛物线运动
-		console.log(111);
+	parabola : function( obj, speedX, speedY){		//抛物线运动
+		// var maxHigh = this.mario.jumpHeight;
+		// var This = this;
+		// obj.timer = setInterval(function(){
+		
+		// },150);
 	},
 	draw : function( img, sx, sy, swidth, sheight, x, y, width, height){
+		this.ctx.clearRect(0,0,this.$myCanvas.width,this.$myCanvas.height);
 		this.ctx.drawImage(img, sx, sy, swidth, sheight, x, y, width, height);
 	},
 	bgMove : function(b){	//控制背景移动从而实现运动
+		var marioLeft = parseInt(this.$map.css('left')) + this.mario.mariox;
+		if( marioLeft >= 0 && marioLeft < 240){//如果左边没有等号，马里奥再返回地图的起点，想要再向右移动时，不会进入这个if语句
+			b = 0;
+		}
 		var bgNowLeft = parseInt(this.$map.css('left')) + b*this.bgSpeed;
-		if( bgNowLeft > 0) {
+		if( bgNowLeft > 0) {	//背景已经移动到最左边。马里奥移动时，背景不再移动
 			bgNowLeft = 0;
 		}
-		if( bgNowLeft < this.$parent.width() - this.$map.width() ){
+		if( bgNowLeft < this.$parent.width() - this.$map.width() ){	//背景已经移动到最右边
 			bgNowLeft = this.$parent.width() - this.$map.width();
 		}
 		this.$map.css('left', bgNowLeft );
@@ -558,6 +599,23 @@ var Game = {
 		// 	}
 		// }
 	},
+	collideDir : function( obj1, obj2 ){	//碰撞方向的检测
+		var L1 = this.getPosition(obj1).left + 0.5*this.gridWidth;
+		var T1 = this.getPosition(obj1).top + 0.5*this.gridHeight;
+
+		var L2 = this.getPosition(obj2).left + 0.5*this.gridWidth;
+		var T2 = this.getPosition(obj2).top + 0.5*this.gridHeight;
+
+		
+	},
+	getPosition : function( obj ){	//物体与物体的碰撞检测，不包括马里奥
+		var pos = {left: 0, top:0};
+		while( obj ){
+			pos.left += obj.offsetLeft;
+			pos.top += obj.offsetTop;
+		}
+		return pos;
+	},
 	collide : function( obj1, obj2){
 		var pos1 = this.getObjPosition(obj1);
 		var L1 = pos1.L;
@@ -577,7 +635,7 @@ var Game = {
 			return true;
 		}
 	},
-	getObjPosition : function(obj){
+	getObjPosition : function(obj){		//获取对象所在位置
 		var pos = {L: 0,R: 0,T:0, B:0};
 		pos.L = obj.position().left;
 		pos.R = obj.position().left + obj.width();
