@@ -61,11 +61,11 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,2,0,0,0,3,2,3,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,3,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,0,0,0,0,0,0,0,0,0,0,0,6,7,0,0,0,0,
@@ -110,12 +110,12 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,3,3,3,3,3,3,3,3,0,0,0,3,3,3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,3,3,3,3,3,3,3,3,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,3,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,3,3,0,0,0,0,2,0,0,2,0,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -135,12 +135,12 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,3,2,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,3,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,2,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,8,8,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,0,0,8,8,8,0,0,
@@ -165,7 +165,7 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,2,3,0,0,0,0,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,3,0,0,0,0,
 						0,0,0,0,0,0,0,0,8,8,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,8,8,8,0,0,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,8,8,8,8,0,0,8,8,8,0,0,0,0,0,0,4,5,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -184,10 +184,10 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,
-						0,0,0,0,0,3,3,3,2,3,3,3,2,2,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,3,3,3,0,3,3,3,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,3,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -230,14 +230,14 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,3,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,3,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,
 						0,0,8,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -262,7 +262,7 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
+						0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,
@@ -315,6 +315,7 @@ var Game = {
 		this.bindEvents();
 		this.createMario();
 		this.askDraw();
+		this.ergodic();
 	},
 	elements : function(){	//收集所有的元素
 		this.$parent = $('#main');
@@ -333,18 +334,27 @@ var Game = {
 		This.$map.css('height',this.colNum*this.gridHeight);
 		This.$map.css('width',this.rowNum*this.gridWidth*this.bgLen);
 		
-		this.mapType = [];
+		this.mapType = [];	//用于后面的碰撞检测
 		for(var i=0;i<this.bgLen;i++){
 			$mapBg = $('<div>');
+			this.mapType[i] = [];
+			$mapBg.css({'position':'absolute','top':0,'left':i*this.rowNum*this.gridWidth,'height':this.colNum*this.gridHeight,'width':560});
 			for(var j=0;j<this.level.arrMap[i].length;j++){
-				var $div = $('<div class="bg'+This.level.arrMap[i][j]+'"></div>');
+				var num = This.level.arrMap[i][j];
+				var $div = $('<div class="bg'+num+'"></div>');
+				//为每个绝对定位的方块设置top值和left值
+				var row = parseInt(j/this.rowNum);		//第几行
+				var col = j%this.rowNum;				//第几列
+				var L = col*this.gridWidth;
+				var T = row*this.gridHeight;
+				$div.css({'left':L,'top':T});
+
+				$div.type = this.level.type[num];
+
 				$div.appendTo($mapBg);
+				this.mapType[i].push($div);
 			}
-			this.mapType.push($mapBg);
-		}
-		for(var i=0;i<this.bgLen;i++){
-			this.mapType[i].css({'position':'absolute','top':0,'left':i*this.rowNum*this.gridWidth,'height':this.colNum*this.gridHeight,'width':560});
-			This.$map.append(this.mapType[i]);
+			this.$map.append($mapBg);
 		}
 	},
 	bindEvents : function(){	//事件操作的集合
@@ -397,8 +407,8 @@ var Game = {
 	mario : {	//马里奥数据
 		id : 'mario',
 		style : 'normal',
-		speedX : 6,		//x方向的速度
-		speedY : 8,		//y方向的速度
+		speedX : 4,		//x方向的速度
+		speedY : 4,		//y方向的速度
 		jumpHeight : 128,	//跳跃的最大高度
 		mariox : 80,		//马里奥起始位置的left值
 		marioy : 320,	//马里奥起始位置的top值
@@ -412,6 +422,7 @@ var Game = {
 		left : false,	//是否向左
 		right : false,	//是否向右
 		up : false,		//是否向上
+		marioWin : false	//马里奥赢了
 	},
 	createMario : function(){	//创建mario
 		var ctx = this.$myCanvas.getContext('2d');
@@ -422,8 +433,8 @@ var Game = {
 		clearInterval(This.mario.timer);
 		This.mario.timer = setInterval(function(){
 			if(This.mario.num > 0 && This.mario.num != 0){
-				This.mario.num -= 4;
-				This.mario.marioy += 4;
+				This.mario.num -= This.mario.speedY;
+				This.mario.marioy += This.mario.speedY;
 			}
 			if(This.mario.num == 0){
 				This.mario.maxHigh = false;
@@ -448,7 +459,7 @@ var Game = {
 					This.drawHeight = 16;
 				}
 				This.bgMove(0);				//马里奥向左走，背景向右移动
-				player.mariox -= This.bgSpeed;		//马里奥也向左移动
+				player.mariox -= player.speedX;		//马里奥也向左移动
 			}
 			if(player.right){
 				if(player.big){
@@ -459,7 +470,7 @@ var Game = {
 					This.drawHeight = 16;
 				}
 				This.bgMove(-1);			//马里奥向右走，背景向左移动
-				player.mariox += This.bgSpeed;		//马里奥也向右移动
+				player.mariox += player.speedX;		//马里奥也向右移动
 			}
 			//imageX的变化
 			This.imageX += This.gridWidth;
@@ -468,8 +479,8 @@ var Game = {
 			}
 			//马里奥还没回到地面
 			if(player.num != 0){
-				player.num -= 4;
-				player.marioy += 4;
+				player.num -= player.speedY;
+				player.marioy += player.speedY;
 			}
 		}else{
 			//没有同时按下左右移动键盘时
@@ -490,30 +501,65 @@ var Game = {
 			}
 			if(player.left){
 				This.bgMove(0);				//马里奥向左走，背景向右移动
-				player.mariox -= This.bgSpeed;		//马里奥也向左移动
+				player.mariox -= player.speedX;		//马里奥也向左移动
 			}
 			if(player.right){
 				This.bgMove(-1);				//马里奥向左走，背景向右移动
-				player.mariox += This.bgSpeed;		//马里奥也向左移动
+				player.mariox += player.speedX;		//马里奥也向左移动
 			}
 			This.imageX = 16;
 
 			if(player.maxHigh){
-				player.num -= 4;
+				player.num -= player.speedY;
 				if(player.num == 0){
 					player.maxHigh = false;
 					This.imageX = 0;
 				}
-				player.marioy += 4;
+				player.marioy += player.speedY;
 			}
 			if(!player.maxHigh && player.num < 128){
-				player.num += 4;
+				player.num += player.speedY;
 				if(player.num >= 128){
 					player.maxHigh = true;
 				}
-				player.marioy -= 4;
+				player.marioy -= player.speedY;
 			}
 		}
+
+		// var L = player.mariox + player.speedX;
+		// //var n = parseInt(L/This.$parent.width());
+		// for(var i=0;i<This.mapType.length;i++){
+		// 	for(var j=0;j<This.mapType[i].length;j++){
+		// 		var object = This.mapType[i][j];
+		// 		if(object.type>0){	//马里奥与物体碰撞
+		// 			var collideDir = This.collideDir(player,object);
+		// 			switch(collideDir){
+		// 				case 'left':
+		// 					if(player.speedX>0){
+		// 						player.speedX = 0;
+		// 						if(object.type == 12){
+		// 							marioWin = true;
+		// 						}
+		// 					}
+		// 					break;
+		// 				case 'right':
+		// 					if(player.speedX>0){
+		// 						player.speedX = 0;
+		// 					}
+		// 					break;
+		// 				case 'top':
+		// 					if(player.speedY>0){
+		// 						player.speedY = 0;
+								
+		// 					}
+		// 					break;
+		// 				case 'bottom':
+		// 					break;
+		// 			}
+		// 		}
+		// 	}
+		// }
+
 		if(player.mariox < 0){	//保证马里奥不走出地图的最左边
 			player.mariox = 0;
 		}
@@ -530,7 +576,8 @@ var Game = {
 		// },150);
 	},
 	draw : function( img, sx, sy, swidth, sheight, x, y, width, height){
-		this.ctx.clearRect(0,0,this.$myCanvas.width,this.$myCanvas.height);
+		//this.ctx.clearRect(0,0,this.$myCanvas.width,this.$myCanvas.height);
+		this.ctx.clearRect(x-5,y-5,swidth+10,sheight+10);
 		this.ctx.drawImage(img, sx, sy, swidth, sheight, x, y, width, height);
 	},
 	bgMove : function(b){	//控制背景移动从而实现运动
@@ -547,7 +594,7 @@ var Game = {
 		}
 		this.$map.css('left', bgNowLeft );
 	},
-	enemyPosition : [
+	pipePosition : [
 		{
 			x : 816,
 			y : 304
@@ -585,6 +632,241 @@ var Game = {
 			y : 304
 		}
 	],
+	askData : [		//问号数据 位置及状态
+		{
+			x : 576,
+			y : 256,
+			status : true
+		},
+		{
+			x : 656,
+			y : 256,
+			status : true
+		},
+		{
+			x : 688,
+			y : 256,
+			status : true
+		},
+		{
+			x : 672,
+			y : 176,
+			status : true
+		},
+		{
+			x : 1712,
+			y : 256,
+			status : true
+		},
+		{
+			x : 1968,
+			y : 176,
+			status : true
+		},
+		{
+			x : 2160,
+			y : 256,
+			status : true
+		},
+		{
+			x : 2208,
+			y : 256,
+			status : true
+		},
+		{
+			x : 2208,
+			y : 176,
+			status : true
+		},
+		{
+			x : 2256,
+			y : 256,
+			status : true
+		},
+		{
+			x : 2528,
+			y : 176,
+			status : true
+		},
+		{
+			x : 2544,
+			y : 176,
+			status : true
+		},
+		{
+			x : 3264,
+			y : 256,
+			status : true
+		},
+		{
+			x : 3488,
+			y : 160,
+			status : true
+		},
+		{
+			x : 3552,
+			y : 160,
+			status : true
+		},
+		{
+			x : 3568,
+			y : 160,
+			status : true
+		},
+		{
+			x : 3776,
+			y : 208,
+			status : true
+		},
+		{
+			x : 4576,
+			y : 96,
+			status : true
+		},
+		{
+			x : 4592,
+			y : 96,
+			status : true
+		},
+		{
+			x : 4992,
+			y : 208,
+			status : true
+		},
+		{
+			x : 5040,
+			y : 208,
+			status : true
+		}
+	],
+	askDraw : function(x,y){	//问号动画的绘制
+		var This = this;
+		var num = 0;
+		setInterval(function(){
+			This.ctx.clearRect(x,y,This.gridWidth,This.gridHeight);
+			This.ctx.drawImage(This.$drawImg,num,19*This.gridHeight,This.gridWidth,This.gridHeight,x,y,This.gridWidth,This.gridHeight);
+			num += 16;
+			if(num >= 48){
+				num = 0;
+			}
+		},200);
+	},
+	enemyPosition : [		//敌人数据
+		{
+			x : 640,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 1136,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 1344,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 1360,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 1744,
+			y : 160,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 1760,
+			y : 160,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 2064,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 2080,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 2304,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 3360,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 1136,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 1344,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 1360,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 1744,
+			y : 160,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 1760,
+			y : 160,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 2064,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 2080,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 2304,
+			y : 320,
+			type : 'triangle',
+			die : false
+		},
+		{
+			x : 3360,
+			y : 320,
+			type : 'triangle',
+			die : false
+		}
+	],
 	pipeCollide : function(){	//pipe管道碰撞检测
 		// for(var i=0;i<this.enemyPosition.length;i++){
 		// 	if( ((this.mario.mariox+this.gridWidth) >= this.enemyPosition[i].x) && this.mario.mariox <= (this.enemyPosition[i].x + 2*this.gridWidth ) ){
@@ -600,12 +882,24 @@ var Game = {
 		// }
 	},
 	collideDir : function( obj1, obj2 ){	//碰撞方向的检测
-		var L1 = this.getPosition(obj1).left + 0.5*this.gridWidth;
-		var T1 = this.getPosition(obj1).top + 0.5*this.gridHeight;
+		var L1 = this.getPosition(obj1).left;
+		var T1 = this.getPosition(obj1).top;
 
-		var L2 = this.getPosition(obj2).left + 0.5*this.gridWidth;
-		var T2 = this.getPosition(obj2).top + 0.5*this.gridHeight;
+		var L2 = this.getPosition(obj2).left;
+		var T2 = this.getPosition(obj2).top;
 
+		if(L1<L2){
+			return 'left';
+		}
+		if(L1>L2){
+			return 'right';
+		}
+		if(T1<T2){
+			return 'bottom';
+		}
+		if(T1>T2){
+			return 'top';
+		}
 		
 	},
 	getPosition : function( obj ){	//物体与物体的碰撞检测，不包括马里奥
@@ -616,7 +910,7 @@ var Game = {
 		}
 		return pos;
 	},
-	collide : function( obj1, obj2){
+	collide : function( obj1, obj2){	//碰撞检测
 		var pos1 = this.getObjPosition(obj1);
 		var L1 = pos1.L;
 		var R1 = pos1.R;
@@ -643,25 +937,58 @@ var Game = {
 		pos.B = obj.position().top + obj.height();
 		return pos;
 	},
-	askData : [
-		{
-			x : 592,
-			y : 288,
-			status : true
+	ergodic : function(){	//遍历
+		var This = this;
+		for(var i in this.askData){	//遍历所有的问号
+			This.askDraw(This.askData[i].x,This.askData[i].y);
 		}
-	],
-	askDraw : function(){	
-		// var This = this;
-		// setInterval(function(){
-		// 	console.log(111);
-		// 	var increment = 0;
-		// 	if(increment >= 48){
-		// 		increment = 0;
-		// 	}
-		// 	This.ctx.clearRect(576,288,16,16);
-		// 	This.draw( This.$drawImg, increment, 176, This.gridWidth, This.gridHeight, 576, 288, This.gridWidth, This.gridHeight );
-		// 	increment += 16;
-		// },150);
-	}
+
+		
+		for(var i in this.enemyPosition){		//遍历所有敌人
+			This.triangleDraw(This.enemyPosition[i]);
+			//物体进入可视区触发移动
+			if(!This.enemyPosition[i].die && (-parseInt(this.$map.css('left')) + this.$parent.width()) > This.enemyPosition[i].x){
+				This.triangleMove( This.enemyPosition[i] );
+			}
+		}
+	},
+	triangleMove : function(obj){		//三角怪的移动
+		clearInterval(obj.timer);
+		var This = this;
+		var speedX = -4;
+		var speedY = 4;
+		var L = 0;
+		var T = 0;
+		obj.timer = setInterval(function(){
+			L = obj.x + speedX;
+			T = obj.y + speedY;
+			//如果敌人超出可视区的左侧
+			if( (L+This.gridWidth) < -parseInt(this.$map.css('left'))){
+				clearInterval(obj.timer);
+			}
+
+			var n = parseInt(L/This.$parent.width());
+
+
+
+
+			obj.x = L;
+			obj.y = T;
+		},200);
+	},
+	triangleDraw : function(obj){		//三角怪的绘制
+		var This = this;
+		var num = 0;
+		var left = 0;
+		setInterval(function(){
+			This.ctx.clearRect(obj.x,obj.y,This.gridWidth,This.gridHeight);
+			This.ctx.drawImage(This.$drawImg,num,18*This.gridHeight,This.gridWidth,This.gridHeight,obj.x,obj.y,This.gridWidth,This.gridHeight);
+			num += 16;
+			if(num >= 32){
+				num = 0;
+			}
+			//left = -parseInt(this.$map.css('left')) + this.$parent.width();
+		},200);
+	},
 }
 Game.init();

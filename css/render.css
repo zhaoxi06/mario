@@ -4,25 +4,25 @@
 #map{position:relative;background: url('../images/game_background.png') repeat-x }
 #map canvas{position: absolute;top: 0;left: 0;}
 
-.bg0{width: 16px;height: 16px;float: left;}
-.bg1{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -80px 0;float: left;}
-.bg2{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -16px 0;float: left;}
-.bg3{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -48px 0;float: left;}
-.bg4{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -16px -16px;float: left;}
-.bg5{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -32px -16px;float: left;}
-.bg6{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -16px -32px;float: left;}
-.bg7{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -32px -32px;float: left;}
-.bg8{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -64px 0;float: left;}
-.bg9{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat 0 0;float: left;}
-.bg10{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat 0 -16px;float: left;}
-.bg11{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat 0 -32px;float: left;}
-.bg12{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat 0 -48px;float: left;}
-.bg13{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -16px -48px;float: left;}
-.bg14{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -32px -48px;float: left;}
-.bg15{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -48px -48px;float: left;}
-.bg16{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -64px -48px;float: left;}
-.bg17{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -80px -48px;float: left;}
-.bg18{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -96px -48px;float: left;}
-.bg19{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -48px -32px;float: left;}
+.bg0{width: 16px;height: 16px;position: absolute;}
+.bg1{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -80px 0;position: absolute;}
+.bg2{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -16px 0;position: absolute;}
+.bg3{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -48px 0;position: absolute;}
+.bg4{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -16px -16px;position: absolute;}
+.bg5{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -32px -16px;position: absolute;}
+.bg6{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -16px -32px;position: absolute;}
+.bg7{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -32px -32px;position: absolute;}
+.bg8{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -64px 0;position: absolute;}
+.bg9{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat 0 0;position: absolute;}
+.bg10{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat 0 -16px;position: absolute;}
+.bg11{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat 0 -32px;position: absolute;}
+.bg12{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat 0 -48px;position: absolute;}
+.bg13{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -16px -48px;position: absolute;}
+.bg14{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -32px -48px;position: absolute;}
+.bg15{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -48px -48px;position: absolute;}
+.bg16{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -64px -48px;position: absolute;}
+.bg17{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -80px -48px;position: absolute;}
+.bg18{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -96px -48px;position: absolute;}
+.bg19{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -48px -32px;position: absolute;}
 
 .normal{width: 16px;height: 16px;background:url('../images/draw.png') no-repeat 0 0;position: absolute;}
