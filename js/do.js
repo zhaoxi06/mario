@@ -349,10 +349,14 @@ var Game = {
 				var T = row*this.gridHeight;
 				$div.css({'left':L,'top':T});
 
-				$div.type = this.level.type[num];
-
 				$div.appendTo($mapBg);
-				this.mapType[i].push($div);
+
+				//为后面的碰撞检测做准备
+				if( num > 1 && num <=12){
+					$div.type = this.level.type[num];
+					$div.status = true;
+					this.mapType[i].push($div);
+				}
 			}
 			this.$map.append($mapBg);
 		}
@@ -526,39 +530,21 @@ var Game = {
 			}
 		}
 
-		// var L = player.mariox + player.speedX;
-		// //var n = parseInt(L/This.$parent.width());
-		// for(var i=0;i<This.mapType.length;i++){
-		// 	for(var j=0;j<This.mapType[i].length;j++){
-		// 		var object = This.mapType[i][j];
-		// 		if(object.type>0){	//马里奥与物体碰撞
-		// 			var collideDir = This.collideDir(player,object);
-		// 			switch(collideDir){
-		// 				case 'left':
-		// 					if(player.speedX>0){
-		// 						player.speedX = 0;
-		// 						if(object.type == 12){
-		// 							marioWin = true;
-		// 						}
-		// 					}
-		// 					break;
-		// 				case 'right':
-		// 					if(player.speedX>0){
-		// 						player.speedX = 0;
-		// 					}
-		// 					break;
-		// 				case 'top':
-		// 					if(player.speedY>0){
-		// 						player.speedY = 0;
-								
-		// 					}
-		// 					break;
-		// 				case 'bottom':
-		// 					break;
-		// 			}
-		// 		}
-		// 	}
-		// }
+		////////////////////////////////////////////////////////////////////
+		//碰撞检测
+		var visible = This.visible();
+		for(var i=visible.x; i<visible.x+visible.num; i++){
+			for(var j=0;j<This.mapType[i].length;j++){
+				var value = This.collide(player,This.mapType[i][j]);
+				if(value){
+					//console.log(This.mapType[i][j]);
+				}
+			}
+		}
+		////////////////////////////////////////////////////////////////////
+
+
+
 
 		if(player.mariox < 0){	//保证马里奥不走出地图的最左边
 			player.mariox = 0;
@@ -568,12 +554,21 @@ var Game = {
 		}
 		This.draw( This.$drawImg, This.imageX, This.imageY, 16, This.drawHeight, This.mario.mariox, This.mario.marioy, 16, This.drawHeight);
 	},
-	parabola : function( obj, speedX, speedY){		//抛物线运动
-		// var maxHigh = this.mario.jumpHeight;
-		// var This = this;
-		// obj.timer = setInterval(function(){
-		
-		// },150);
+	classify : function(obj){
+		var type = obj.type;
+		//if(type == )
+	},
+	visible : function(){	//判断可视区内是地图的第几屏
+		var L1 = Math.floor( (-parseInt(this.$map.css('left')))/this.$parent.width() );
+		var L2 = (-parseInt(this.$map.css('left')))%this.$parent.width();
+		var count = 0;	//一屏或者2屏
+		if( L2 == 0){
+			count = 1;
+		}else{
+			count = 2;
+		}
+		var visible = { x:L1, num:count};
+		return visible;
 	},
 	draw : function( img, sx, sy, swidth, sheight, x, y, width, height){
 		//this.ctx.clearRect(0,0,this.$myCanvas.width,this.$myCanvas.height);
@@ -926,15 +921,24 @@ var Game = {
 		if ( R1 < L2 || L1 > R2 || B1 < T2 || T1 > B2 ) {	//没有发生碰撞
 			return false;
 		}else{	//发生碰撞
+			//console.log(pos1);
+			console.log(pos2);
 			return true;
 		}
 	},
 	getObjPosition : function(obj){		//获取对象所在位置
 		var pos = {L: 0,R: 0,T:0, B:0};
-		pos.L = obj.position().left;
-		pos.R = obj.position().left + obj.width();
-		pos.T = obj.position().top;
-		pos.B = obj.position().top + obj.height();
+		if(obj.id == 'mario'){
+			pos.L = obj.mariox;
+			pos.R = obj.mariox + this.gridWidth;
+			pos.T = obj.marioy;
+			pos.B = obj.marioy + this.gridHeight;
+		}else{
+			pos.L = obj.position().left;
+			pos.R = obj.position().left + obj.width();
+			pos.T = obj.position().top;
+			pos.B = obj.position().top + obj.height();
+		}
 		return pos;
 	},
 	ergodic : function(){	//遍历
@@ -948,6 +952,7 @@ var Game = {
 			This.triangleDraw(This.enemyPosition[i]);
 			//物体进入可视区触发移动
 			if(!This.enemyPosition[i].die && (-parseInt(this.$map.css('left')) + this.$parent.width()) > This.enemyPosition[i].x){
+				console.log(111);
 				This.triangleMove( This.enemyPosition[i] );
 			}
 		}
@@ -966,12 +971,6 @@ var Game = {
 			if( (L+This.gridWidth) < -parseInt(this.$map.css('left'))){
 				clearInterval(obj.timer);
 			}
-
-			var n = parseInt(L/This.$parent.width());
-
-
-
-
 			obj.x = L;
 			obj.y = T;
 		},200);
