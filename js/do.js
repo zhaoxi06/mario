@@ -21,6 +21,7 @@ var Game = {
 			17 : 'end5',		//终点5
 			18 : 'end6',		//终点6
 			19 : 'end7',		//终点7
+			20 : 'aBrick'		//问号被撞击后变成砖块
 		},
 		arrMap : [		//地图
 					[	//第一屏
@@ -60,12 +61,12 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,3,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,2,0,0,0,3,2,3,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,0,0,0,0,0,0,0,0,0,0,0,6,7,0,0,0,0,
@@ -110,12 +111,12 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,3,3,3,3,3,3,3,3,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,3,3,3,3,3,3,3,3,0,0,0,3,3,3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,
+						0,3,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,3,3,0,0,0,0,2,0,0,2,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -135,12 +136,12 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,3,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,3,2,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,2,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,8,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,8,8,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,0,0,8,8,8,0,0,
@@ -165,7 +166,7 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,3,0,0,0,0,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,2,3,0,0,0,0,
 						0,0,0,0,0,0,0,0,8,8,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,8,8,8,0,0,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,8,8,8,8,0,0,8,8,8,0,0,0,0,0,0,4,5,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -184,11 +185,11 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,
-						0,0,0,0,0,3,3,3,0,3,3,3,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,3,3,3,2,3,3,3,2,2,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,3,0,0,0,0,0,0,0,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,2,3,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,8,8,8,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -230,14 +231,14 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+						0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,3,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,
-						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,
+						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,3,
 						0,0,8,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,3,3,3,3,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -262,7 +263,7 @@ var Game = {
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-						0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
+						2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,
 						0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,
@@ -309,12 +310,33 @@ var Game = {
 	imageX : 0,		//图像的x坐标
 	imageY : 0,
 	drawHeight : 16,	//要绘制的图像的高度
+	count : 0,
 	init : function(){	//初始化
 		this.elements();
+		this.gameStart();
+	},
+	gameStart : function(){
+		var This = this;
 		this.createMap();
-		this.bindEvents();
 		this.createMario();
-		this.askDraw();
+		this.ergodic();
+		$(document).on('keydown',function(ev){
+			if(ev.keyCode == 32){
+				This.show.css('display','none');
+				This.$map.css('display','block');
+				setTimeout(function(){
+					This.bindEvents();
+					This.countDown();
+					This.lives.html(parseInt(This.lives.html())-1);
+				},1000);
+			}
+		});
+	},
+	reStart : function(){
+		this.createMario();
+		this.countDown();
+		this.bindEvents();
+		this.createMap();
 		this.ergodic();
 	},
 	elements : function(){	//收集所有的元素
@@ -323,6 +345,14 @@ var Game = {
 		this.$myCanvas = $('#myCanvas').get(0);
 		this.$drawImg = $('#drawImg').get(0);
 		this.ctx = this.$myCanvas.getContext('2d');
+		this.menu = $('#menu');
+		this.score = $('#score em');
+		this.coins = $('#coins em');
+		this.cusonms = $('#cusonms em');
+		this.times = $('#time em');
+		this.lives = $('#lives em');
+		this.show = $('#show');
+		this.$gameOver = $('#gameOver');
 	},
 	createMap : function(){		//创建地图
 		var This = this;
@@ -336,23 +366,24 @@ var Game = {
 		
 		this.mapType = [];	//用于后面的碰撞检测
 		for(var i=0;i<this.bgLen;i++){
-			$mapBg = $('<div>');
+			$mapBg = $('<div class="wrap"></div>');
 			this.mapType[i] = [];
-			$mapBg.css({'position':'absolute','top':0,'left':i*this.rowNum*this.gridWidth,'height':this.colNum*this.gridHeight,'width':560});
+			//$mapBg.css({'position':'absolute','top':0,'left':i*this.rowNum*this.gridWidth,'height':this.colNum*this.gridHeight,'width':560});
+			$mapBg.css({'height':this.colNum*this.gridHeight,'width':560});
 			for(var j=0;j<this.level.arrMap[i].length;j++){
 				var num = This.level.arrMap[i][j];
 				var $div = $('<div class="bg'+num+'"></div>');
 				//为每个绝对定位的方块设置top值和left值
 				var row = parseInt(j/this.rowNum);		//第几行
 				var col = j%this.rowNum;				//第几列
-				var L = col*this.gridWidth;
+				var L = col*this.gridWidth + i*this.$parent.width();
 				var T = row*this.gridHeight;
 				$div.css({'left':L,'top':T});
 
 				$div.appendTo($mapBg);
 
 				//为后面的碰撞检测做准备
-				if( num > 1 && num <=12){
+				if( num > 2 && num <=12){
 					$div.type = this.level.type[num];
 					$div.status = true;
 					this.mapType[i].push($div);
@@ -365,13 +396,25 @@ var Game = {
 		var This = this;
 		$(document).on('keydown',function(ev){
 			This.keyDown(ev);
-			This.change();
+			//This.change();
 		});
 		$(document).on('keyup',function(ev){
 			This.keyUp(ev);
-			This.backStart();
+			//This.backStart(1);
 		});
+		//This.frame();
+		clearInterval(This.mario.timer);
+		This.mario.timer = setInterval(function(){
+			This.change();
+		},30)
 	},
+	// frame : function(){
+	// 	var This = this;
+	// 	clearInterval(This.mario.timer);
+	// 	This.mario.timer = setInterval(function(){
+	// 		This.change();
+	// 	},30)
+	// },
 	keyDown : function(ev){	//键盘按下时
 		var This = this;
 		switch(ev.keyCode) {
@@ -389,6 +432,12 @@ var Game = {
 				This.mario.right = true;
 				This.mario.status = 'right';
 				break;
+			// case 32 :   //空格
+			// 	This.show.css('display','none');
+			// 	This.$map.css('display','block');
+			// 	This.countDown();
+			default :
+				break;
 		}
 	},
 	keyUp : function(ev){	//键盘抬起时
@@ -401,24 +450,26 @@ var Game = {
 			case 38 :    //向上
 			case 74 :    //J
 				This.mario.up = false;
+				This.mario.maxHigh = true;
 				break;
 			case 39 :    //向右
 			case 70 :    //F
 				This.mario.right = false;
 				break;
+			default :
+				break;
 		}
 	},
-	mario : {	//马里奥数据
+	marioData : {	//马里奥数据
 		id : 'mario',
-		style : 'normal',
+		type : 'mario',
 		speedX : 4,		//x方向的速度
 		speedY : 4,		//y方向的速度
 		jumpHeight : 128,	//跳跃的最大高度
-		mariox : 80,		//马里奥起始位置的left值
-		marioy : 320,	//马里奥起始位置的top值
+		x : 80,		//马里奥起始位置的left值
+		y : 320,	//马里奥起始位置的top值
 		fly : false,	//是否在飞
 		big : false,	//是否变大
-		//stop : true,			//是否静止
 		status : 'right',		//记录当前方向是向左还是向右
 		timer : null,
 		num : 0,	//马里奥升高的高度
@@ -426,137 +477,413 @@ var Game = {
 		left : false,	//是否向左
 		right : false,	//是否向右
 		up : false,		//是否向上
-		marioWin : false	//马里奥赢了
+		marioWin : false,	//马里奥赢了
+		collide : false,		//是否发生碰撞
+		die : false
 	},
 	createMario : function(){	//创建mario
-		var ctx = this.$myCanvas.getContext('2d');
-		ctx.drawImage(this.$drawImg,0,8*this.gridHeight,16,32,80,320,16,32);
-	},
-	backStart : function(){
 		var This = this;
-		clearInterval(This.mario.timer);
-		This.mario.timer = setInterval(function(){
-			if(This.mario.num > 0 && This.mario.num != 0){
-				This.mario.num -= This.mario.speedY;
-				This.mario.marioy += This.mario.speedY;
+		this.mario = {};
+		this.mario.id = 'mario';
+		this.mario.type = 'mario';
+		this.mario.speedX = 4;
+		this.mario.speedY = 4;
+		this.mario.jumpHeight = 128;
+		this.mario.x = 80;
+		this.mario.y = 320;
+		this.mario.big = false;
+		this.mario.status = 'right';
+		this.mario.timer = null;
+		this.mario.num = 0;
+		this.mario.maxHigh = false;
+		this.mario.left = false;
+		this.mario.right = false;
+		this.mario.up = false;
+		this.mario.marioWin = false;
+		this.mario.die = false;
+		this.mario.change = false;
+		//this.ctx.clearRect(0,0,this.$myCanvas.width,this.$myCanvas.height);
+		this.draw( This.$drawImg, 0, 0, 16, 16, This.mario.x, This.mario.y, 16, 16);
+	},
+	backStart : function(b){
+		var This = this;
+		clearInterval(This.backTimer);
+		This.backTimer = setInterval(function(){
+			if(b){
+				// if(!This.mario.speedY){
+				// 	This.imageX = 0;
+				// 	clearInterval(This.backTimer);
+				// }
+				// if(This.mario.num != 0 || This.mario.y != 336-This.drawHeight){
+				// 	This.mario.speedY = 4;
+				// 	This.mario.num -= This.mario.speedY;
+				// 	This.mario.y += This.mario.speedY;
+				// 	if(This.mario.y == 336-This.drawHeight){
+				// 		This.mario.num = 0;
+				// 	}
+				//  }
+				// if(This.mario.num == 0 && This.mario.y == 336-This.drawHeight){console.log(111);
+				// 	This.mario.maxHigh = false;
+				// 	This.imageX = 0;
+				// 	This.mario.y = 336-This.drawHeight;
+				// 	clearInterval(This.backTimer);
+				// 	This.bBtn = false;
+				// }
+			}else{console.log(111);
+				This.mario.speedY = 4;
+				This.mario.y += This.mario.speedY;
+				if(This.mario.y > 332){
+					clearInterval(This.backTimer)
+					This.marioDie();
+				}
 			}
-			if(This.mario.num == 0){
-				This.mario.maxHigh = false;
-				This.imageX = 0;
-				clearInterval(This.mario.timer);
+			
+			This.marioCollide(This.mario);
+			////////////////////////////////////////////////////////////////////////////
+			//问号的碰撞
+			for(var i in This.ask){
+				// if((-parseInt(This.$map.css('left')) + This.$parent.width()) > This.askData[i].x){
+				// 	This.askDraw( This.mario, This.askData[i]);
+				// }
+				This.askCollide( This.mario, This.ask[i])
 			}
+			////////////////////////////////////////////////////////////////////////////
 			//这一步至关重要，如果不清除之前画布上的痕迹，马里奥在画面上显示一直没动，但是实际位置已经发生了变化
-			This.draw( This.$drawImg, This.imageX, This.imageY, 16, This.drawHeight, This.mario.mariox, This.mario.marioy, 16, This.drawHeight);
+			//This.draw( This.$drawImg, This.imageX, This.imageY, 16, This.drawHeight, This.mario.x, This.mario.y, 16, This.drawHeight);
 		},30);
 	},
 	change : function(){	//mario的改变 左右移动和跳跃
 		var This = this;
-		var player = this.mario;
+		var player = This.mario;
 		if(!player.up){
 			//imageY的选择
-			if(player.left){
-				if(player.big){
-					This.imageY = 4*This.gridHeight;
-					This.drawHeight = 32;	//马里奥变大，高度上需要占用两个方块
-				}else{
-					This.imageY = 0;
-					This.drawHeight = 16;
-				}
-				This.bgMove(0);				//马里奥向左走，背景向右移动
-				player.mariox -= player.speedX;		//马里奥也向左移动
-			}
-			if(player.right){
+			if(player.status == 'left'){
 				if(player.big){
 					This.imageY = 12*This.gridHeight;
-					This.drawHeight = 32;
+					This.drawHeight = 32;	//马里奥变大，高度上需要占用两个方块
 				}else{
 					This.imageY = 8*This.gridHeight;
 					This.drawHeight = 16;
 				}
-				This.bgMove(-1);			//马里奥向右走，背景向左移动
-				player.mariox += player.speedX;		//马里奥也向右移动
 			}
-			//imageX的变化
-			This.imageX += This.gridWidth;
-			if(This.imageX >= 48){
-				This.imageX = 0;
+			if(player.status == 'right'){
+				if(player.big){
+					This.imageY = 4*This.gridHeight;
+					This.drawHeight = 32;
+				}else{
+					This.imageY = 0;
+					This.drawHeight = 16;
+				}
 			}
 			//马里奥还没回到地面
-			if(player.num != 0){
+			if(player.num != 0 || player.y != 336-This.drawHeight){console.log(222);
+				This.imageX = 16;
+				player.speedY = 4;
 				player.num -= player.speedY;
-				player.marioy += player.speedY;
+				player.y += player.speedY;
+				if(player.y == 336-This.drawHeight){
+					player.maxHigh = false;
+					player.num = 0;
+				}
+			}
+			//imageX的变化
+			if(player.change){		//马里奥吃蘑菇变大时走这里
+				This.imageY = 2*This.gridHeight;
+				player.speedX = 0;
+				This.imageX += This.gridWidth;
+				if(This.imageX >= 48){
+					This.imageX = 0;
+					This.count ++;
+					if(This.count == 3){
+						This.count = 0;
+						player.change = false;
+					}
+				}
+			}else{
+				if(player.left || player.right){
+					This.imageX += This.gridWidth;
+					if(This.imageX >= 48){
+						This.imageX = 0;
+					}
+				}else{
+					This.imageX = 0;
+				}
 			}
 		}else{
 			//没有同时按下左右移动键盘时
 			if(player.big){
 				if(player.status == 'left'){
-					This.imageY = 6*This.gridHeight;
+					This.imageY = 14*This.gridHeight;
 				}
 				if(player.status == 'right'){
-					This.imageY = 14*This.gridHeight;
+					This.imageY = 6*This.gridHeight;
 				}
 			}else{
 				if(player.status == 'left'){
-					This.imageY = 1*This.gridHeight;
-				}
-				if(player.status == 'right'){
 					This.imageY = 9*This.gridHeight;
 				}
-			}
-			if(player.left){
-				This.bgMove(0);				//马里奥向左走，背景向右移动
-				player.mariox -= player.speedX;		//马里奥也向左移动
-			}
-			if(player.right){
-				This.bgMove(-1);				//马里奥向左走，背景向右移动
-				player.mariox += player.speedX;		//马里奥也向左移动
+				if(player.status == 'right'){
+					This.imageY = 1*This.gridHeight;
+				}
 			}
 			This.imageX = 16;
 
-			if(player.maxHigh){
+			if(!player.speedY){
+				player.num = 0;
+			}
+			if(player.maxHigh){console.log(333);
+				player.speedY = 4;
 				player.num -= player.speedY;
 				if(player.num == 0){
 					player.maxHigh = false;
 					This.imageX = 0;
 				}
-				player.marioy += player.speedY;
+				player.y += player.speedY;
+				if((player.y+This.drawHeight) >= 336){	//防止马里奥在不按任何键是还未落到地面，又按下向上键引起马里奥的y值持续增加的问题
+					player.maxHigh = false;
+					This.imageX = 0;
+				}
 			}
-			if(!player.maxHigh && player.num < 128){
-				player.num += player.speedY;
+			if(!player.maxHigh && player.num < 128){console.log(555);
+				player.speedY = -4;
+				player.num -= player.speedY;
 				if(player.num >= 128){
 					player.maxHigh = true;
 				}
-				player.marioy -= player.speedY;
+				player.y += player.speedY;
 			}
 		}
-
 		////////////////////////////////////////////////////////////////////
 		//碰撞检测
 		var visible = This.visible();
 		for(var i=visible.x; i<visible.x+visible.num; i++){
 			for(var j=0;j<This.mapType[i].length;j++){
-				var value = This.collide(player,This.mapType[i][j]);
+				var mapType = This.mapType[i][j];
+				var value = This.collide(player,mapType);	//发生碰撞返回true
 				if(value){
-					//console.log(This.mapType[i][j]);
+					var dir = This.collideDir(player,mapType);	//碰撞方向
+					This.classifyMario( player, mapType, dir);
 				}
 			}
 		}
 		////////////////////////////////////////////////////////////////////
 
-
-
-
-		if(player.mariox < 0){	//保证马里奥不走出地图的最左边
-			player.mariox = 0;
+		if( dir&&(dir == 'right' && player.left) || dir&&(dir == 'left' && player.right) ){
+			player.speedX = 0;
 		}
-		if( -(parseInt(This.$map.css('left'))) >= player.mariox){
-			player.mariox = -parseInt(This.$map.css('left'));
+		
+		if(player.left){
+			This.bgMove(0);				//马里奥向左走，背景向右移动
+			player.speedX = -4;
+			player.x += player.speedX;		//马里奥也向左移动
 		}
-		This.draw( This.$drawImg, This.imageX, This.imageY, 16, This.drawHeight, This.mario.mariox, This.mario.marioy, 16, This.drawHeight);
+		if(player.right){
+			This.bgMove(-1);				//马里奥向左走，背景向右移动
+			player.speedX = 4;
+			player.x += player.speedX;		//马里奥也向左移动
+		}
+
+		if(player.x < 0){	//保证马里奥不走出地图的最左边
+			player.x = 0;
+		}
+		if( -(parseInt(This.$map.css('left'))) >= player.x){  	//保证马里奥在可视区内
+			player.x = -parseInt(This.$map.css('left'));
+		}
+
+		This.draw( This.$drawImg, This.imageX, This.imageY, 16, This.drawHeight, This.mario.x, This.mario.y, 16, This.drawHeight);
+
+		var mapLeft = -parseInt(this.$map.css('left'));
+		var mainWidth = this.$parent.width();
+		//////////////////////////////////////////////////////////////////////////////
+		//三角怪进入可视区触发移动
+		for(var i in this.arrEnemy){
+			if(!this.arrEnemy[i].status && ( mapLeft+ mainWidth) > this.arrEnemy[i].x ){
+				this.arrEnemy[i].status = true;		//使三角怪一进入可视区就触发，不会出现延迟的现象
+				This.triangleMove( this.arrEnemy[i] , -4 );
+			}
+		}
+
+		//////////////////////////////////////////////////////////////////////////////
+		//问号的碰撞
+		for(var i in this.ask){
+			This.askCollide( player, This.ask[i])
+		}
+		//////////////////////////////////////////////////////////////////////////////
+		//在空白地面
+		if(player.y >= 320 && !(player.left && player.up) && !(player.right && player.up)){
+			for(var i in this.bareGround){
+				if( player.x >= This.bareGround[i].x && (player.x+This.gridWidth) <= (This.bareGround[i].x+This.bareGround[i].num*This.gridWidth) ){
+					This.marioDie();
+				}
+			}
+		}
+		//////////////////////////////////////////////////////////////////////////////
 	},
-	classify : function(obj){
+	marioCollide : function(player){
+		var This = this;
+		var visible = This.visible();
+		for(var i=visible.x; i<visible.x+visible.num; i++){
+			for(var j=0;j<This.mapType[i].length;j++){
+				var mapType = This.mapType[i][j];
+				var value = This.collide(player,mapType);	//发生碰撞返回true
+				if(value){
+					var dir = This.collideDir(player,mapType);	//碰撞方向
+					This.classifyMario( player, mapType, dir);
+				}
+			}
+		}
+	},
+	classifyMario : function( player, obj, dir){
+		var This = this;
 		var type = obj.type;
-		//if(type == )
+		var pos = This.getObjPosition(obj);
+		// switch(type){
+		// 	case 'brick' :    //砖块
+		// 		switch(dir){
+		// 			case 'left':
+		// 				player.speedX = 0;
+		// 				player.x = pos.L - This.gridWidth;
+		// 				break;
+		// 			case 'right':
+		// 				player.speedX = 0;
+		// 				player.x = pos.L + This.gridWidth;
+		// 				break;
+		// 			case 'top':
+		// 				console.log('top');
+		// 				player.speedY = 0;
+		// 				player.maxHigh = false;
+		// 				player.y = pos.T - This.drawHeight;
+		// 				break;
+		// 			case 'bottom':
+		// 				player.maxHigh = true;
+		// 				break;
+		// 			default : 
+		// 				break;
+		// 		}
+		// 		break;
+		// 	case 'pipe1' :
+		// 	case 'pipe2' :
+		// 	case 'pipe3' :
+		// 	case 'pipe4' :   //管道
+		// 		switch(dir){
+		// 			case 'left':
+		// 				player.speedX = 0;
+		// 				player.x = pos.L - This.gridWidth;
+		// 				break;
+		// 			case 'right':
+		// 				player.speedX = 0;
+		// 				player.x = pos.L + This.gridWidth;
+		// 				break;
+		// 			case 'top':
+		// 				player.speedY = 0;
+		// 				player.maxHigh = false;
+		// 				player.y = pos.T - This.drawHeight;
+		// 				break;
+		// 			case 'bottom':
+		// 				break;
+		// 			default : 
+		// 				break;
+		// 		}
+		// 		break;
+		// 	case 'stone' :   //石头
+		// 		switch(dir){
+		// 			case 'left':
+		// 				player.speedX = 0;
+		// 				player.x = pos.L - This.gridWidth;
+		// 				break;
+		// 			case 'right':
+		// 				player.speedX = 0;
+		// 				player.x = pos.L + This.gridWidth;
+		// 				break;
+		// 			case 'top':
+		// 				player.speedY = 0;
+		// 				player.maxHigh = false;
+		// 				player.y = pos.T - This.drawHeight;
+		// 				break;
+		// 			case 'bottom':
+		// 				//player.speedY = -player.speedY;
+		// 				break;
+		// 			default : 
+		// 				break;
+		// 		}
+		// 		break;
+		// 	case 'flag1' :
+		// 	case 'flag2' :
+		// 	case 'flag3' :
+		// 	case 'flag4' :   //旗帜
+		// 		player.marioWin = true;
+		// 		player.x = pos.L;
+		// 		console.log('马里奥赢了');
+		// 		This.marioWin(pos.L);
+		// 		break;
+		// 	default : 
+		// 		break;
+		// }
+		switch(dir){
+			case 'left'://console.log('left');
+				switch(type){
+					case 'brick' :		//砖块
+					case 'pipe1' :		//管道
+					case 'pipe2' :		//管道
+					case 'pipe3' :		//管道
+					case 'pipe4' :		//管道
+					case 'stone' :		//石头
+						player.speedX = 0;
+						player.x = pos.L - This.gridWidth;
+						break;
+					default :
+						break;
+				}
+				break;
+			case 'right':
+				switch(type){
+					case 'brick' :		//砖块
+					case 'pipe1' :		//管道
+					case 'pipe2' :		//管道
+					case 'pipe3' :		//管道
+					case 'pipe4' :		//管道
+					case 'stone' :		//石头
+						player.speedX = 0;
+						player.x = pos.L + This.gridWidth;
+						break;
+					default :
+						break;
+				}
+				break;
+			case 'top'://console.log('top');
+				switch(type){
+					case 'brick' :		//砖块
+					case 'pipe1' :
+					case 'pipe2' :
+					case 'pipe3' :
+					case 'pipe4' :
+					case 'stone' :		//石头
+						player.speedY = 0;
+						player.maxHigh = false;
+						player.y = pos.T - This.drawHeight;
+						break;
+					default :
+						break;
+				}
+				break;
+			case 'bottom'://console.log('bottom');
+				switch(type){
+					case 'brick' :
+					case 'pipe1' :
+					case 'pipe2' :
+					case 'pipe3' :
+					case 'pipe4' :
+					case 'stone' :
+						player.maxHigh = true;
+						break;
+					default :
+						break;
+				}
+				break;
+			default :
+				break;
+		}
+		
 	},
 	visible : function(){	//判断可视区内是地图的第几屏
 		var L1 = Math.floor( (-parseInt(this.$map.css('left')))/this.$parent.width() );
@@ -571,12 +898,11 @@ var Game = {
 		return visible;
 	},
 	draw : function( img, sx, sy, swidth, sheight, x, y, width, height){
-		//this.ctx.clearRect(0,0,this.$myCanvas.width,this.$myCanvas.height);
-		this.ctx.clearRect(x-5,y-5,swidth+10,sheight+10);
+		this.ctx.clearRect(x-4,y-4,swidth+8,sheight+8);
 		this.ctx.drawImage(img, sx, sy, swidth, sheight, x, y, width, height);
 	},
 	bgMove : function(b){	//控制背景移动从而实现运动
-		var marioLeft = parseInt(this.$map.css('left')) + this.mario.mariox;
+		var marioLeft = parseInt(this.$map.css('left')) + this.mario.x;
 		if( marioLeft >= 0 && marioLeft < 240){//如果左边没有等号，马里奥再返回地图的起点，想要再向右移动时，不会进入这个if语句
 			b = 0;
 		}
@@ -589,321 +915,479 @@ var Game = {
 		}
 		this.$map.css('left', bgNowLeft );
 	},
-	pipePosition : [
-		{
-			x : 816,
-			y : 304
-		},
-		{
-			x : 1024,
-			y : 288
-		},
-		{
-			x : 1152,
-			y : 272
-		},
-		{
-			x : 1376,
-			y : 272
-		},
-		{
-			x : 3152,
-			y : 304
-		},
-		{
-			x : 3440,
-			y : 304
-		},
-		{
-			x : 4848,
-			y : 288
-		},
-		{
-			x : 4880,
-			y : 272
-		},
-		{
-			x : 5472,
-			y : 304
-		}
-	],
 	askData : [		//问号数据 位置及状态
 		{
 			x : 576,
 			y : 256,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 656,
 			y : 256,
-			status : true
+			status : true,
+			especial : 'mushroom'
 		},
 		{
 			x : 688,
 			y : 256,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 672,
 			y : 176,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 1712,
 			y : 256,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 1968,
 			y : 176,
-			status : true
+			status : true,
+			especial : 'heliotrope'
 		},
 		{
 			x : 2160,
 			y : 256,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 2208,
 			y : 256,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 2208,
 			y : 176,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 2256,
 			y : 256,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 2528,
 			y : 176,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 2544,
 			y : 176,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 3264,
 			y : 256,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 3488,
 			y : 160,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 3552,
 			y : 160,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 3568,
 			y : 160,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 3776,
-			y : 208,
-			status : true
+			y : 224,
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 4576,
 			y : 96,
-			status : true
+			status : true,
+			especial : 'mushroom'
 		},
 		{
 			x : 4592,
 			y : 96,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 4992,
 			y : 208,
-			status : true
+			status : true,
+			especial : 'normal'
 		},
 		{
 			x : 5040,
 			y : 208,
-			status : true
+			status : true,
+			especial : 'normal'
 		}
 	],
-	askDraw : function(x,y){	//问号动画的绘制
+	askDraw : function( player, obj){	//问号动画的绘制
+		if(!obj) return false;
+		clearInterval(obj.timer);
 		var This = this;
 		var num = 0;
-		setInterval(function(){
-			This.ctx.clearRect(x,y,This.gridWidth,This.gridHeight);
-			This.ctx.drawImage(This.$drawImg,num,19*This.gridHeight,This.gridWidth,This.gridHeight,x,y,This.gridWidth,This.gridHeight);
-			num += 16;
-			if(num >= 48){
+
+		obj.timer = setInterval(function(){
+			if(obj.status){
+				num += 16;
+				if(num >= 48){
+					num = 0;
+				}
+			}else{
+				num = 48;
+			}
+			This.ctx.clearRect(obj.x,obj.y,This.gridWidth,This.gridHeight);
+			This.ctx.drawImage(This.$drawImg,num,19*This.gridHeight,This.gridWidth,This.gridHeight,obj.x,obj.y,This.gridWidth,This.gridHeight);
+		},200);
+	},
+	askCollide : function(player,obj){		//马里奥与问号的碰撞
+		var This = this;
+		var collide = This.collide(player,obj);
+		if(collide && !player.die){
+			var dir = This.collideDir(player,obj);
+			if(dir == 'left'){
+				player.speedX = 0;
+				player.x = obj.x - This.gridWidth;
+			}else if(dir == 'right'){
+				player.speedX = 0;
+				player.x = obj.x + This.gridWidth;
+			}else if(dir == 'top'){
+				player.speedY = 0;
+				player.y = obj.y - This.drawHeight;
+				player.maxHigh = false;
+			}else if(dir == 'bottom'){
+				player.maxHigh = true;
+				if(obj.status){
+					obj.status = false;
+					console.log(obj.especial);
+					switch(obj.especial){
+						case 'normal' :
+							This.coins.html(parseInt(This.coins.html())+1);
+							This.score.html(parseInt(This.score.html())+100);
+							break;
+						case 'mushroom' :
+							This.mushroom(obj);
+							break;
+						case 'heliotrope' :
+							This.heliotrope(obj);
+							break;
+					}
+					This.ctx.clearRect(obj.x,obj.y,This.gridWidth,This.gridHeight);
+					This.ctx.drawImage(This.$drawImg,48,19*This.gridHeight,This.gridWidth,This.gridHeight,obj.x,obj.y,This.gridWidth,This.gridHeight);
+				}
+			}
+		}
+	},
+	heliotrope : function(obj){
+		var This = this;
+		var $heliotrope = { x:obj.x, y:obj.y-16};
+		var num = 0;
+		clearInterval($heliotrope.timer);
+		$heliotrope.timer = setInterval(function(){
+			num += This.gridWidth;
+			if(num>=48){
 				num = 0;
 			}
-		},200);
+			var value = This.collide( This.mario, $heliotrope);
+			if(value){
+				clearInterval($heliotrope.timer);
+				This.score.html(parseInt(This.score.html())+500);
+				This.lives.html(parseInt(This.lives.html())+1);
+			}
+			This.ctx.clearRect($heliotrope.x,$heliotrope.y,This.gridWidth,This.gridHeight);
+			This.ctx.drawImage(This.$drawImg,num,17*This.gridHeight,This.gridWidth,This.gridHeight,$heliotrope.x,$heliotrope.y,This.gridWidth,This.gridHeight);
+		},100)
+	},
+	mushroom : function(obj){
+		var This = this;
+		var player = This.mario;
+		var $mushroom = $('<div class="mushroom"></div>');
+		$mushroom.css('left',obj.x);
+		$mushroom.css('top',obj.y);
+		This.$map.append($mushroom);
+		var speedX = 8;
+		var speedY = 4;
+		var show = false;
+		var L,T;
+		clearInterval($mushroom.timer);
+		$mushroom.timer = setInterval(function(){
+			L = $mushroom.position().left;
+			T = $mushroom.position().top;
+			if( !show && T > obj.y-16){
+				T -= speedY;
+			}else{
+				show = true;
+			}
+			if(show){	//与砖块、管道等的碰撞检测
+				speedY = 8;
+				var visible = This.visible();
+				for(var i=visible.x; i<visible.x+visible.num; i++){
+					for(var j=0;j<This.mapType[i].length;j++){
+						var mapType = This.mapType[i][j];
+						var value = This.collide($mushroom,mapType);	//发生碰撞返回true
+						if(value){
+							var dir = This.collideDir($mushroom,mapType);	//碰撞方向
+							var type = mapType.type;
+							var pos = This.getObjPosition(mapType);
+							switch(type){
+								case 'pipe1' :
+								case 'pipe2' :
+								case 'pipe3' :
+								case 'pipe4' :
+									switch(dir){
+										case 'left':
+											speedX = -8;
+											break;
+										case 'right':
+											speedX = 8;
+											break;
+									}
+									break;
+								default :
+									speedY = 0;
+							}
+
+						}
+					}
+				}
+				L += speedX;
+				T += speedY;
+				if( (L+This.gridWidth) < (-parseInt(This.$map.css('left')))){
+					speedX = 0;
+				}
+				if( T >= 320){
+					T = 320;
+				}
+			}
+			$mushroom.css('left',L);
+			$mushroom.css('top',T);
+
+			//蘑菇与马里奥的碰撞
+			var value = This.collide( player, $mushroom);
+			if(value){
+				clearInterval($mushroom.timer);
+				$mushroom.remove();
+				player.big = true;
+				player.change = true;
+				player.y = player.y+This.drawHeight-32;
+				This.score.html(parseInt(This.score.html())+1000);
+			}
+		},100)
+		
+	},
+	bareGround : [
+		{
+			x : 1552,
+			num : 2
+		},
+		{
+			x : 1840,
+			num : 3
+		},
+		{
+			x : 2960,
+			num : 2
+		},
+		{
+			x : 3920,
+			num : 14
+		},
+		{
+			x : 4480,
+			num : 23
+		},
+		{
+			x : 4784,
+			num : 3
+		},
+		{
+			x : 5104,
+			num : 3
+		},
+		{
+			x : 5184,
+			num : 3
+		},
+		{
+			x : 5248,
+			num : 4
+		},
+		{
+			x : 5328,
+			num : 5
+		}
+	],
+	// bare : function(){
+	// 	var This = this;
+	// 	var bare = [];		//
+	// 	var colArr = [];
+	// 	var arrMap = this.level_1.arrMap;
+	// 	for (var i = 0; i < arrMap.length; i++) {
+	// 		for(var j=770;j<arrMap[i].length;j++){
+	// 			if(arrMap[i][j]==0){
+	// 				var col = j%35;
+	// 				colArr.push(col);
+	// 			}
+	// 		}
+	// 		for(var j=0;j<arrMap[i].length;j++){
+				
+	// 		}
+	// 	}
+	// },
+	ergodicPipe : function(){
+		var This = this;
+		var arr = [];
+		for(var i=0; i<This.mapType.length; i++){
+			for(var j=0;j<This.mapType[i].length;j++){
+				var type = This.mapType[i][j].type;
+				if(type == 'pipe1'){
+					arr.push(This.getObjPosition(This.mapType[i][j]).L);
+				}
+			}
+		}
+		arr.sort(This.compare);
+		return arr;
+	},
+	ergodic : function(){
+		var This = this;
+		This.arrEnemy = [];
+		for(var i in this.enemyPosition){
+			var enemy = {};
+			enemy.x = This.enemyPosition[i].x;
+			enemy.y = This.enemyPosition[i].y;
+			enemy.type = This.enemyPosition[i].type;
+			enemy.status = This.enemyPosition[i].status;
+			This.arrEnemy.push(enemy);
+		}
+		This.ask = [];
+		for(var i in this.askData){
+			var ask = {};
+			ask.x = This.askData[i].x;
+			ask.y = This.askData[i].y;
+			ask.status = This.askData[i].status;
+			ask.especial = This.askData[i].especial;
+			This.ask.push(ask);
+		}
+		for(var i in this.ask){
+			this.askDraw( this.mario, this.ask[i]);
+		}
+	},
+	compare : function(num1,num2){
+		return num1 -num2;
 	},
 	enemyPosition : [		//敌人数据
 		{
 			x : 640,
 			y : 320,
 			type : 'triangle',
-			die : false
+			status : false
 		},
 		{
 			x : 1136,
 			y : 320,
 			type : 'triangle',
-			die : false
+			status : false
 		},
 		{
 			x : 1344,
 			y : 320,
 			type : 'triangle',
-			die : false
+			status : false
 		},
 		{
 			x : 1360,
 			y : 320,
 			type : 'triangle',
-			die : false
+			status : false
 		},
-		{
-			x : 1744,
-			y : 160,
-			type : 'triangle',
-			die : false
-		},
-		{
-			x : 1760,
-			y : 160,
-			type : 'triangle',
-			die : false
-		},
+		// {
+		// 	x : 1744,
+		// 	y : 160,
+		// 	type : 'triangle',
+		// 	status : false
+		// },
+		// {
+		// 	x : 1760,
+		// 	y : 160,
+		// 	type : 'triangle',
+		// 	status : false
+		// },
 		{
 			x : 2064,
 			y : 320,
 			type : 'triangle',
-			die : false
+			status : false
 		},
 		{
 			x : 2080,
 			y : 320,
 			type : 'triangle',
-			die : false
+			status : false
 		},
 		{
 			x : 2304,
 			y : 320,
 			type : 'triangle',
-			die : false
+			status : false
 		},
 		{
 			x : 3360,
 			y : 320,
 			type : 'triangle',
-			die : false
-		},
-		{
-			x : 1136,
-			y : 320,
-			type : 'triangle',
-			die : false
-		},
-		{
-			x : 1344,
-			y : 320,
-			type : 'triangle',
-			die : false
-		},
-		{
-			x : 1360,
-			y : 320,
-			type : 'triangle',
-			die : false
-		},
-		{
-			x : 1744,
-			y : 160,
-			type : 'triangle',
-			die : false
-		},
-		{
-			x : 1760,
-			y : 160,
-			type : 'triangle',
-			die : false
-		},
-		{
-			x : 2064,
-			y : 320,
-			type : 'triangle',
-			die : false
-		},
-		{
-			x : 2080,
-			y : 320,
-			type : 'triangle',
-			die : false
-		},
-		{
-			x : 2304,
-			y : 320,
-			type : 'triangle',
-			die : false
-		},
-		{
-			x : 3360,
-			y : 320,
-			type : 'triangle',
-			die : false
+			status : false
 		}
 	],
-	pipeCollide : function(){	//pipe管道碰撞检测
-		// for(var i=0;i<this.enemyPosition.length;i++){
-		// 	if( ((this.mario.mariox+this.gridWidth) >= this.enemyPosition[i].x) && this.mario.mariox <= (this.enemyPosition[i].x + 2*this.gridWidth ) ){
-		// 		if( (this.mario.marioy+this.gridHeight) > this.enemyPosition[i].y ){
-		// 			this.mario.mariox = this.enemyPosition[i].x - 20;
-		// 			this.$map.css('left', 96-this.enemyPosition[i].x );
-		// 			return false;
-		// 		}else if( (this.mario.marioy+this.gridHeight) <= this.enemyPosition[i].y ){
-		// 			this.mario.marioy = this.enemyPosition[i].y - 16;
-		// 			return false;
-		// 		}
-		// 	}
-		// }
-	},
+
 	collideDir : function( obj1, obj2 ){	//碰撞方向的检测
-		var L1 = this.getPosition(obj1).left;
-		var T1 = this.getPosition(obj1).top;
+		var pos1 = this.getObjPosition(obj1);
+		var L1 = pos1.L;
+		var R1 = pos1.R;
+		var T1 = pos1.T;
 
-		var L2 = this.getPosition(obj2).left;
-		var T2 = this.getPosition(obj2).top;
+		var pos2 = this.getObjPosition(obj2);
+		var L2 = pos2.L;
+		var R2 = pos2.R;
+		var T2 = pos2.T;
 
-		if(L1<L2){
-			return 'left';
+		if(Math.abs(L1-L2) > Math.abs(T1-T2)){
+			if(L1 < L2){
+				return 'left';
+			}
+			if(L1 > L2){
+				return 'right';
+			}
+		}else if( Math.abs(L1-L2) < Math.abs(T1-T2) ){
+			if( (R1>L2) && (L1<R2) ){
+				if(T1 < T2){
+					return 'top';
+				}else if(T1 > T2){
+					return 'bottom';
+				}
+			}
 		}
-		if(L1>L2){
-			return 'right';
-		}
-		if(T1<T2){
-			return 'bottom';
-		}
-		if(T1>T2){
-			return 'top';
-		}
-		
-	},
-	getPosition : function( obj ){	//物体与物体的碰撞检测，不包括马里奥
-		var pos = {left: 0, top:0};
-		while( obj ){
-			pos.left += obj.offsetLeft;
-			pos.top += obj.offsetTop;
-		}
-		return pos;
+		return false;
 	},
 	collide : function( obj1, obj2){	//碰撞检测
 		var pos1 = this.getObjPosition(obj1);
@@ -921,73 +1405,204 @@ var Game = {
 		if ( R1 < L2 || L1 > R2 || B1 < T2 || T1 > B2 ) {	//没有发生碰撞
 			return false;
 		}else{	//发生碰撞
-			//console.log(pos1);
-			console.log(pos2);
 			return true;
 		}
 	},
 	getObjPosition : function(obj){		//获取对象所在位置
 		var pos = {L: 0,R: 0,T:0, B:0};
-		if(obj.id == 'mario'){
-			pos.L = obj.mariox;
-			pos.R = obj.mariox + this.gridWidth;
-			pos.T = obj.marioy;
-			pos.B = obj.marioy + this.gridHeight;
+		if(obj.x){
+			pos.L = obj.x;
+			pos.R = obj.x + this.gridWidth;
+			pos.T = obj.y;
+			pos.B = obj.y + this.gridHeight;
 		}else{
-			pos.L = obj.position().left;
-			pos.R = obj.position().left + obj.width();
-			pos.T = obj.position().top;
-			pos.B = obj.position().top + obj.height();
+			pos.L = parseInt(obj.css('left'));
+			pos.R = parseInt(obj.css('left')) + obj.width();
+			pos.T = parseInt(obj.css('top'));
+			pos.B = parseInt(obj.css('top')) + obj.height();
 		}
 		return pos;
 	},
-	ergodic : function(){	//遍历
-		var This = this;
-		for(var i in this.askData){	//遍历所有的问号
-			This.askDraw(This.askData[i].x,This.askData[i].y);
-		}
-
-		
-		for(var i in this.enemyPosition){		//遍历所有敌人
-			This.triangleDraw(This.enemyPosition[i]);
-			//物体进入可视区触发移动
-			if(!This.enemyPosition[i].die && (-parseInt(this.$map.css('left')) + this.$parent.width()) > This.enemyPosition[i].x){
-				console.log(111);
-				This.triangleMove( This.enemyPosition[i] );
-			}
-		}
-	},
-	triangleMove : function(obj){		//三角怪的移动
+	triangleMove : function(obj,speedX){		//三角怪的移动
 		clearInterval(obj.timer);
 		var This = this;
-		var speedX = -4;
-		var speedY = 4;
+		var speedY = 0;
 		var L = 0;
 		var T = 0;
+		var num = 0;
+		var left = 0;
+
+		var arr = This.ergodicPipe();
+		var low = This.binSearch(arr,obj.x);
+		
 		obj.timer = setInterval(function(){
 			L = obj.x + speedX;
 			T = obj.y + speedY;
 			//如果敌人超出可视区的左侧
-			if( (L+This.gridWidth) < -parseInt(this.$map.css('left'))){
+			if( (L+This.gridWidth) < -parseInt(This.$map.css('left'))){
 				clearInterval(obj.timer);
 			}
-			obj.x = L;
-			obj.y = T;
-		},200);
-	},
-	triangleDraw : function(obj){		//三角怪的绘制
-		var This = this;
-		var num = 0;
-		var left = 0;
-		setInterval(function(){
-			This.ctx.clearRect(obj.x,obj.y,This.gridWidth,This.gridHeight);
+			//如果敌人超出可视区的下方
+			if( T > 368){console.log('超出可视区的下方了');
+				clearInterval(obj.timer);
+			}
+			//检测是否跟mario发生碰撞
+			var collide = This.collide(This.mario,obj);
+			if(collide && !This.mario.die){
+				var dir = This.collideDir(This.mario,obj);
+				if(dir == 'top'){
+					num = 32;
+					clearInterval(obj.timer);
+					This.score.html(parseInt(This.score.html())+100);
+					This.monsterDie(obj);
+				}else{
+					speedX = 0;
+					This.mario.die = true;
+					This.marioDie();
+				}
+			}
+			//与管道的碰撞检测
+			if(obj.status && low>0){
+				if( L <= arr[low]+2*This.gridWidth ){
+					speedX = 4;
+				}
+				if( L+This.gridWidth >= arr[low+1]){
+					speedX = -4;
+				}
+			}
+			//与空白地面的碰撞检测
+			for(var i in This.bareGround){
+				if( L >= This.bareGround[i].x && (L+This.gridWidth) <= (This.bareGround[i].x+This.bareGround[i].num*This.gridWidth) ){
+					speedX = 0;
+					speedY = 8;
+				}
+			}
+
+			This.ctx.clearRect(obj.x-5,obj.y-10,This.gridWidth+10,This.gridHeight+10);
 			This.ctx.drawImage(This.$drawImg,num,18*This.gridHeight,This.gridWidth,This.gridHeight,obj.x,obj.y,This.gridWidth,This.gridHeight);
 			num += 16;
 			if(num >= 32){
 				num = 0;
 			}
-			//left = -parseInt(this.$map.css('left')) + this.$parent.width();
-		},200);
+			
+			obj.x = L;
+			obj.y = T;
+		},120);
 	},
+	binSearch : function(arr,data){		//二分法找出三角怪应放在哪个位置
+		var upperBound = arr.length-1;
+		var lowerBound = 0;
+		while(lowerBound<=upperBound){
+			var mid = Math.floor((upperBound+lowerBound)/2);
+			if(arr[mid]<data){
+				lowerBound = mid;
+			}else if(arr[mid]>data){
+				upperBound = mid;
+			}
+			if(lowerBound+1==upperBound){
+				return lowerBound;
+			}
+		}
+	},
+	moveToCastle : function(){
+		var This = this;
+		This.mario.y = 336-This.drawHeight;
+		var speedX = 8;
+		var num = 0;
+		timer = setInterval(function(){
+			This.imageX += This.gridWidth;
+			if(This.imageX >= 48){
+				This.imageX = 0;
+			}
+			This.mario.x += speedX;
+			if(This.mario.x >= (6160-8*This.gridWidth)){
+				clearInterval(timer);
+				This.ctx.clearRect(0,0,This.$myCanvas.width,This.$myCanvas.height);
+			}
+			This.draw( This.$drawImg, This.imageX, This.imageY, 16, This.drawHeight, This.mario.x, This.mario.y, 16, This.drawHeight);
+		},100)
+	},
+	marioWin : function(L){
+		var This = this;
+		var player = This.mario;
+		clearInterval(This.mario.timer);
+		This.ctx.clearRect(0,0,This.$myCanvas.width,This.$myCanvas.height);
+		var speedY = 8;
+		player.x = L;
+		This.imageX = 0;
+		This.mario.timer = setInterval(function(){
+			player.y += speedY;
+			if((player.y+This.drawHeight) >= 320){
+				clearInterval(This.mario.timer);
+				This.moveToCastle();
+			}
+			This.draw( This.$drawImg, This.imageX, This.imageY, 16, This.drawHeight, This.mario.x, This.mario.y, 16, This.drawHeight);
+		},100)
+	},
+	marioDie : function(){
+		var This = this;
+		clearInterval(This.mario.timer);
+		clearInterval(This.timeTimer);
+		var speedY = 16;
+		var T = 0;
+		var num = 0;
+		var timer = null;
+		timer = setInterval(function(){
+			if(num<80){
+				T = This.mario.y - speedY;
+				num += speedY;
+			}else{
+				speedY = 20;
+				T = This.mario.y + speedY;
+				if(T>=340){
+					clearInterval(timer);
+					T = 320;
+				}
+			}
+			This.mario.y = T;
+
+			This.ctx.clearRect(This.mario.x,0,This.gridWidth,560);
+			This.ctx.drawImage(This.$drawImg,48,0,This.gridWidth,This.gridHeight,This.mario.x,This.mario.y,This.gridWidth,This.gridHeight);
+		},100);
+		setTimeout(function(){
+			var html = parseInt(This.lives.html())-1;
+			if(html<0){
+				This.$parent.css('display','none');
+				$('.box').css('display','none');
+				This.$gameOver.css('display','block');
+				This.lives.html(0);
+				clearInterval(timer);
+			}else{
+				This.lives.html(html);
+				$('.wrap').remove();
+				This.$map.css('left',0);
+				for(var i in This.arrEnemy){
+					clearInterval(This.arrEnemy[i].timer);
+				}
+				for(var i in This.ask){
+					clearInterval(This.ask[i].timer);
+				}
+				This.ctx.clearRect(0,0,This.$myCanvas.width,This.$myCanvas.height);
+				//This.init();
+				This.reStart();
+			}
+		},1000);
+	},
+	countDown : function(){		//倒计时
+		var This = this;
+		clearInterval(This.timeTimer);
+		This.times.html(500);
+		This.timeTimer = setInterval(function(){
+			var times = parseInt(This.times.html())-1;
+			This.times.html(times);
+			if(!times){
+				clearInterval(This.timeTimer);
+				This.marioDie();
+			}
+		},1000)
+	},
+	monsterDie : function(obj){
+		this.ctx.clearRect(obj.x,obj.y,this.gridWidth,this.gridHeight);
+	}
 }
 Game.init();

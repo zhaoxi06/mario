@@ -1,12 +1,14 @@
 *{padding: 0;margin: 0;}
-#main{margin: 50px auto;position: relative;overflow: hidden;}
+#main{margin: 0 auto;position: relative;overflow: hidden;}
 
-#map{position:relative;background: url('../images/game_background.png') repeat-x }
+#map{position:relative;background: url('../images/game_background.png') repeat-x; display: none;}
 #map canvas{position: absolute;top: 0;left: 0;}
+#map .wrap{float: left;}
 
 .bg0{width: 16px;height: 16px;position: absolute;}
 .bg1{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -80px 0;position: absolute;}
-.bg2{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -16px 0;position: absolute;}
+/*.bg2{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -16px 0;position: absolute;}*/
+.bg2{width: 16px;height: 16px;position: absolute;}
 .bg3{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -48px 0;position: absolute;}
 .bg4{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -16px -16px;position: absolute;}
 .bg5{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -32px -16px;position: absolute;}
@@ -24,5 +26,20 @@
 .bg17{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -80px -48px;position: absolute;}
 .bg18{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -96px -48px;position: absolute;}
 .bg19{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -48px -32px;position: absolute;}
+.bg20{width: 16px;height: 16px;background: url('../images/spriteBg.png') no-repeat -16px 0;position: absolute;}
 
 .normal{width: 16px;height: 16px;background:url('../images/draw.png') no-repeat 0 0;position: absolute;}
+
+/*菜单部分*/
+#menu{width:560px;height: 60px;background: #5E91FE;margin: 20px auto 0;color: #fff;position: relative;}
+.box{width: 112px;height: 60px;float: left;text-align: center;font-weight: bold;font-size: 20px;font-family:'方正舒体'; }
+.box span, .box em{display: block;line-height: 30px;}
+em{font-style: normal;}
+
+/*页面展示部分*/
+#show{width: 560px;height:368px;position: absolute;top: 0;left: 0;background: url('../images/show.png');}
+
+#gameOver{display: none;position: absolute;top: 0;left: 0;}
+
+/*蘑菇*/
+.mushroom{width: 16px;height: 16px;position: absolute;background: url('../images/draw.png') no-repeat -48px -288px;}
